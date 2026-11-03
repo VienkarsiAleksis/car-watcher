@@ -1,0 +1,43 @@
+{
+  "check_every_minutes": 5,
+  "searches": [
+    {
+      "name": "RWD manual ≤2000€",
+      "ss_urls": [
+        "https://www.ss.com/lv/transport/cars/sell/",
+        "https://www.ss.com/lv/transport/cars/bmw/sell/",
+        "https://www.ss.com/lv/transport/cars/mercedes/sell/",
+        "https://www.ss.com/lv/transport/cars/volvo/sell/",
+        "https://www.ss.com/lv/transport/cars/lexus/sell/",
+        "https://www.ss.com/lv/transport/cars/opel/omega/sell/",
+        "https://www.ss.com/lv/transport/cars/ford/scorpio/sell/",
+        "https://www.ss.com/lv/transport/cars/ford/sierra/sell/",
+        "https://www.ss.com/lv/transport/cars/mazda/mx-5/sell/",
+        "https://www.ss.com/lv/transport/cars/jaguar/sell/",
+        "https://www.ss.com/lv/transport/cars/chrysler/300c/sell/",
+        "https://www.ss.com/lv/transport/cars/toyota/supra/sell/"
+      ],
+      "max_price": 2000,
+      "min_engine_l": 2.0,
+      "fuels": [
+        "benzīns",
+        "dīzelis"
+      ],
+      "gearbox": "Manuāla",
+      "inspection_valid_until": "02.2027",
+      "rear_wheel_drive": true,
+      "must_not_contain": [
+        "rezerves daļ",
+        "pa daļām",
+        "uz daļām",
+        "bez tehniskās",
+        "avārij"
+      ]
+    }
+  ],
+  "alerts": {
+    "windows_notification": true,
+    "telegram_bot_token": "",
+    "telegram_chat_id": ""
+  }
+}

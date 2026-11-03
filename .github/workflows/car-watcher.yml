@@ -1,0 +1,38 @@
+name: Car watcher
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # every 5 min (GitHub may start runs a few minutes late)
+  workflow_dispatch:         # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write            # to save seen.json back to the repo
+
+concurrency:
+  group: car-watcher
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check ss.com
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python car_watcher.py --once
+
+      - name: Save seen listings
+        run: |
+          git config user.name "car-watcher-bot"
+          git config user.email "car-watcher-bot@users.noreply.github.com"
+          git add seen.json
+          git diff --cached --quiet || git commit -m "Update seen listings"
+          git push
